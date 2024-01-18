@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VocaBu - Traditional Food Vocabulary</title>
-    <!-- Include Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VocaBu - Food Vocabulary</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container mt-4">
-    <h1 class="text-center mb-4">VocaBu - Traditional Food Vocabulary</h1>
+  <h1>VocaBu - Food Vocabulary</h1>
 
-    <ul class="list-group">
-        <!-- Add list items for each word with a button to pronounce -->
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dish 1
-            <button class="btn btn-primary" onclick="speak('Dish 1')">Pronounce</button>
-        </li>
-        <!-- Repeat the above list item structure for other words -->
+  <table id="vocabularyTable">
+    <thead>
+      <tr>
+        <th>Word</th>
+        <th>Definition (British English)</th>
+        <th>Pronunciation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Sample data (you can replace it with the actual top 50 words) -->
+      <tr>
+        <td>Spices</td>
+        <td>Aromatic or pungent substances used to flavor food.</td>
+        <td><button onclick="pronounce('spices')">Listen</button></td>
+      </tr>
+      <!-- Add more rows with words, definitions, and pronunciation buttons -->
+    </tbody>
+  </table>
 
-        <!-- Example: Dish 2 -->
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dish 2
-            <button class="btn btn-primary" onclick="speak('Dish 2')">Pronounce</button>
-        </li>
-
-        <!-- Add more list items as needed -->
-
-    </ul>
-</div>
-
-<!-- Include Bootstrap JS and ResponsiveVoice.js -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_API_KEY"></script>
-<script>
-    // Function to pronounce the given text
-    function speak(text) {
-        responsiveVoice.speak(text, "UK English Male", {rate: 0.9});
+  <script>
+    // Function to simulate pronunciation (replace with actual pronunciation logic)
+    function pronounce(word) {
+      alert(`Pronouncing: ${word}`);
+      // Add actual pronunciation logic here (text-to-speech API, audio files, etc.)
     }
-</script>
+  </script>
+
 </body>
 </html>
