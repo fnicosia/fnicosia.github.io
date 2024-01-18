@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traditional Food Vocabulary</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Traditional Food Vocabulary</h2>
+  <div id="wordList" class="row"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@google-cloud/text-to-speech/build/protos/protos.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+  const words = [
+    { word: 'Recipe', translation: 'Receta' },
+    { word: 'Ingredients', translation: 'Ingredientes' },
+    // Add more words as needed
+  ];
+
+  function createButton(word) {
+    const button = document.createElement('button');
+    button.className = 'btn btn-primary ml-2';
+    button.textContent = 'Pronounce';
+    button.addEventListener('click', () => pronounceWord(word));
+    return button;
+  }
+
+  function pronounceWord(word) {
+    const audio = new Audio(`https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${word.translation}&tl=en&total=1&idx=0&textlen=${word.translation.length}&client=tw-ob&prev=input`);
+    audio.play();
+  }
+
+  function createWordCard(word) {
+    const card = document.createElement('div');
+    card.className = 'card col-md-3 mb-3';
+
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+
+    const title = document.createElement('h5');
+    title.className = 'card-title';
+    title.textContent = word.word;
+
+    const button = createButton(word);
+
+    cardBody.appendChild(title);
+    cardBody.appendChild(button);
+    card.appendChild(cardBody);
+
+    return card;
+  }
+
+  function renderWordList() {
+    const wordListContainer = document.getElementById('wordList');
+    words.forEach(word => {
+      const wordCard = createWordCard(word);
+      wordListContainer.appendChild(wordCard);
+    });
+  }
+
+  renderWordList();
+</script>
+
+</body>
+</html>
